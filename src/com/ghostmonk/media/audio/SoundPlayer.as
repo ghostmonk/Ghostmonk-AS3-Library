@@ -16,7 +16,7 @@ package com.ghostmonk.media.audio {
 	 * @author ghostmonk
 	 * 
 	 */
-	public class MusicPlayer extends EventDispatcher {
+	public class SoundPlayer extends EventDispatcher {
 		
 		
 		
@@ -35,7 +35,7 @@ package com.ghostmonk.media.audio {
 		 * 
 		 * 
 		 */
-		public function MusicPlayer() {
+		public function SoundPlayer() {
 			
 			_isReady = false;
 			_isPlaying = false;
@@ -194,7 +194,7 @@ package com.ghostmonk.media.audio {
 				_soundPlayer.close()
 			}
 			catch( e:Error ) {
-				trace( e.name );
+				//trace( e.name );
 			}
 			
 			_pausePosition = 0;
@@ -218,7 +218,7 @@ package com.ghostmonk.media.audio {
 		
 		private function onChannelActivate( e:Event ):void {
 			
-			trace( "channel activate" );
+			//trace( "channel activate" );
 			
 		}
 		
@@ -226,7 +226,7 @@ package com.ghostmonk.media.audio {
 		
 		private function onChannelDeactivate( e:Event ):void {
 			
-			trace( "channel deactivagte" );
+			//trace( "channel deactivagte" );
 			
 		}
 		
@@ -234,7 +234,7 @@ package com.ghostmonk.media.audio {
 		
 		private function onChannelComplete( e:Event ):void {
 			
-			trace( "channel complete" );
+			//trace( "channel complete" );
 			dispatchEvent( new Event( "stop" ) );
 			
 		}
@@ -243,7 +243,7 @@ package com.ghostmonk.media.audio {
 		
 		private function onSoundActivate( e:Event ):void {
 			
-			trace( "sound activate" );
+			//trace( "sound activate" );
 			
 		}
 		
@@ -251,7 +251,7 @@ package com.ghostmonk.media.audio {
 		
 		private function onSoundDeactivate( e:Event ):void {
 			
-			trace( "sound deactivate" );
+			//trace( "sound deactivate" );
 			
 		}
 		
@@ -259,7 +259,7 @@ package com.ghostmonk.media.audio {
 		
 		private function onComplete( e:Event ):void {
 			
-			trace( "sound complete" );
+			//trace( "sound complete" );
 			
 		}
 		
@@ -275,7 +275,7 @@ package com.ghostmonk.media.audio {
 		
 		private function onOpen( e:Event ):void {
 			
-			trace( "on open" );
+			//trace( "on open" );
 				
 		}
 		
@@ -283,7 +283,7 @@ package com.ghostmonk.media.audio {
 		
 		private function onIOError( e:IOErrorEvent ):void {
 			
-			trace( "on IOError" );
+			//trace( "on IOError" );
 			
 		}
 		

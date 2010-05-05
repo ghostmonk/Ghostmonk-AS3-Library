@@ -1,95 +1,73 @@
-package com.ghostmonk.utils
-{
+package com.ghostmonk.utils {
 	
-	import flash.display.Loader;
-	import flash.display.LoaderInfo;
+	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	import flash.events.Event;
-	import flash.events.EventDispatcher;
 	import flash.events.ProgressEvent;
-	import flash.net.URLRequest;
-	
-	
-	
-	/** 
-	 * @author ghostmonk
+	import flash.utils.getDefinitionByName;
+	import flash.utils.getQualifiedClassName;
+
+	/**
+	 * Based on Kieth Peter's AS3 preloader.
+	 * 
+	 * @author ghostmonk 2009-09-21
 	 * 
 	 */
-	public class SiteLoader extends EventDispatcher {
+	public class SiteLoader extends MovieClip {
 		
 		
 		
-		private var _preloader:MovieClip;
-		private var _mainLoader:Loader;
-		private var _callback:Function;
-		private var _content:Object;
+		private var _mainClassRef:String;
+		private var _main:DisplayObjectContainer;
 		
 		
 		
-		/**
-		 * 
-		 * @param url
-		 * @param preloader
-		 * 
-		 */
-		public function SiteLoader( url:String, preloader:MovieClip, callBack:Function ) {	
+		public function SiteLoader( mainClassRef:String = "Main" ) {
 			
-			_preloader = preloader;
-			_mainLoader = new Loader();
-			_preloader.stop();
-			
-			_preloader.alpha = 0;
-			_callback = callBack;
-			
-			_mainLoader.contentLoaderInfo.addEventListener( ProgressEvent.PROGRESS, onProgress );
-			_mainLoader.contentLoaderInfo.addEventListener( Event.COMPLETE, onComplete );			
-			_mainLoader.load( new URLRequest( url ) );
+			stop();
+			_mainClassRef = mainClassRef;
+			root.loaderInfo.addEventListener( ProgressEvent.PROGRESS, onProgress ); 
+			root.loaderInfo.addEventListener( Event.COMPLETE, onComplete ); 
 			
 		}
 		
 		
 		
-		/**
-		 * 
-		 * @param xPos
-		 * @param yPos
-		 * 
-		 */
-		public function postionProgressBar( xPos:Number, yPos:Number ):void {
+		protected function updateLoader( percent:Number ) : void {
 			
-			_preloader.x = xPos;
-			_preloader.y = yPos;
-			
-		}
-		
-		
-		public function cleanUp() : void {
-			
-			_mainLoader.contentLoaderInfo.removeEventListener( ProgressEvent.PROGRESS, onProgress );
-			_mainLoader.contentLoaderInfo.removeEventListener( Event.COMPLETE, onComplete );
-			_mainLoader = null;
+			throw new Error( "Must override updateLoader in " + getQualifiedClassName( this ) );
 			
 		}
 		
 		
 		
-		private function onProgress( e:ProgressEvent ):void {
+		protected function cleanUp() : void {}
+		
+		
+		
+		private function onProgress( e:ProgressEvent ) : void {
 			
-			var percent:Number = e.bytesTotal != 0 ? e.bytesLoaded / e.bytesTotal : 0;
-			_preloader.gotoAndStop( Math.ceil( percent * 100 ) );
+			var percent:Number = root.loaderInfo.bytesTotal ? root.loaderInfo.bytesLoaded / root.loaderInfo.bytesTotal : 0;
+			updateLoader( percent );
 			
 		}
 		
 		
 		
-		private function onComplete( e:Event ):void  {
-			
-			_callback( e.target.content );		
+		private function onComplete( e:Event ) : void 
+		{	
 			cleanUp();
 			
+			nextFrame();
+			var mainClass:Class = getDefinitionByName( _mainClassRef ) as Class;
+			_main = new mainClass();
+			addChild( _main );
+			
+			root.loaderInfo.removeEventListener( ProgressEvent.PROGRESS, onProgress ); 
+			root.loaderInfo.removeEventListener( Event.COMPLETE, onComplete ); 	
 		}
 		
 		
-				
+		
 	}
 }

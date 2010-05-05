@@ -8,9 +8,6 @@ package com.ghostmonk.utils
 	 */
 	public class StringCleaner
 	{
-		
-		
-		
 		private var _boldReg:RegExp;
 		private var _boldEndReg:RegExp;
 		private var _divReg:RegExp;
@@ -18,20 +15,15 @@ package com.ghostmonk.utils
 		private var _spacesReg:RegExp;		
 		private var _addNewLineReg:RegExp;
 		
-		
-		
-		public function StringCleaner() {
-			
+		public function StringCleaner() 
+		{	
 			_boldReg = /<strong>/gi;
 			_boldEndReg = /<\/strong>/gi;
 			_divReg = /<div\b[^>]*>(.*?)/gi;
 			_divEndReg = /<\/div\b[^>]*>(.*?)/gi;
 			_spacesReg = /\s{2,}/gi;
-			_addNewLineReg = /<\/p><p>/gi;
-			
+			_addNewLineReg = /<\/p><p>/gi;	
 		}
-		
-		
 		
 		/**
 		 * Removes &lt;div&gt; tags and contained attributes 
@@ -43,8 +35,8 @@ package com.ghostmonk.utils
 		 * @return 
 		 * 
 		 */
-		public function htmlOutput( input:String ):String {
-			
+		public function htmlOutput( input:String ) : String 
+		{	
 			var output:String = '';
 			
 			output = input.replace(_divReg,"");	
@@ -54,11 +46,7 @@ package com.ghostmonk.utils
 			output = output.replace(_boldReg,"<b>");
 			output = output.replace(_boldEndReg,"</b>");
 			
-			return output;
-			
+			return output;	
 		}
-		
-		
-		
 	}
 }

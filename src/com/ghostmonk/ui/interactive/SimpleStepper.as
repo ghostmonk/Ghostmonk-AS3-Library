@@ -1,6 +1,8 @@
-package com.ghostmonk.ui.composed {
+package com.ghostmonk.ui.interactive {
 	
 	import com.ghostmonk.events.MeasureEvent;
+	import com.ghostmonk.ui.interactive.buttons.ClickableSprite;
+	import com.ghostmonk.ui.interactive.buttons.InteractiveSprite;
 	
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
@@ -50,7 +52,8 @@ package com.ghostmonk.ui.composed {
 			start:Number = 1, 
 			increment:Number = 1 ) {
 			
-			super( view, true );
+			super( view );
+			view.mouseChildren = true;
 			
 			_view = view;
 			_up = new ClickableSprite( up, onIncrement );

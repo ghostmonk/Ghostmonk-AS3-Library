@@ -13,8 +13,11 @@
     <classEntry path="com.ghostmonk.display.graphics.shapes.Polygon"/>
     <classEntry path="com.ghostmonk.display.graphics.shapes.RoundedRectangle"/>
     <classEntry path="com.ghostmonk.display.graphics.shapes.SimpleRectangle"/>
+    <classEntry path="com.ghostmonk.errorEvents.LoadingError"/>
     <classEntry path="com.ghostmonk.events.FormEvent"/>
+    <classEntry path="com.ghostmonk.events.IDEvent"/>
     <classEntry path="com.ghostmonk.events.MeasureEvent"/>
+    <classEntry path="com.ghostmonk.events.NavigationEvent"/>
     <classEntry path="com.ghostmonk.events.PercentageEvent"/>
     <classEntry path="com.ghostmonk.events.PointValueEvent"/>
     <classEntry path="com.ghostmonk.events.RadioSelectionEvent"/>
@@ -30,7 +33,6 @@
     <classEntry path="com.ghostmonk.media.BasicSpectrum"/>
     <classEntry path="com.ghostmonk.media.SmoothSpectrum"/>
     <classEntry path="com.ghostmonk.media.SoundSpectrum"/>
-    <classEntry path="com.ghostmonk.media.audio.MusicPlayer"/>
     <classEntry path="com.ghostmonk.media.image.BasicImageLoader"/>
     <classEntry path="com.ghostmonk.media.image.BitmapDataHarvester"/>
     <classEntry path="com.ghostmonk.media.video.CoreVideo"/>
@@ -57,19 +59,12 @@
     <classEntry path="com.ghostmonk.net.AssetLoader"/>
     <classEntry path="com.ghostmonk.net.BulkImageLoader"/>
     <classEntry path="com.ghostmonk.net.ComplexURLLoader"/>
+    <classEntry path="com.ghostmonk.net.IDLoader"/>
     <classEntry path="com.ghostmonk.net.IndexLoader"/>
     <classEntry path="com.ghostmonk.net.SimpleURLLoader"/>
     <classEntry path="com.ghostmonk.net.XMLLoader"/>
     <classEntry path="com.ghostmonk.particles.PerlinParticleEngine"/>
     <classEntry path="com.ghostmonk.text.EmbeddedText"/>
-    <classEntry path="com.ghostmonk.ui.composed.ClickableSprite"/>
-    <classEntry path="com.ghostmonk.ui.composed.DraggableInteractiveSprite"/>
-    <classEntry path="com.ghostmonk.ui.composed.InteractiveSprite"/>
-    <classEntry path="com.ghostmonk.ui.composed.SimpleMCToggleBtn"/>
-    <classEntry path="com.ghostmonk.ui.composed.SimpleSlider"/>
-    <classEntry path="com.ghostmonk.ui.composed.SimpleStepper"/>
-    <classEntry path="com.ghostmonk.ui.composed.Switch"/>
-    <classEntry path="com.ghostmonk.ui.composed.TwoDimensionalGridControl"/>
     <classEntry path="com.ghostmonk.ui.formControls.RadioSelector"/>
     <classEntry path="com.ghostmonk.ui.graveyard.IScrollerAsset"/>
     <classEntry path="com.ghostmonk.ui.graveyard.Scroller"/>
@@ -90,6 +85,17 @@
     <classEntry path="com.ghostmonk.ui.graveyard.idecomposed.VideoScrubBar"/>
     <classEntry path="com.ghostmonk.ui.graveyard.video.HorizontalScrollDrag"/>
     <classEntry path="com.ghostmonk.ui.graveyard.video.PlaylistLink"/>
+    <classEntry path="com.ghostmonk.ui.interactive.SimpleSlider"/>
+    <classEntry path="com.ghostmonk.ui.interactive.SimpleStepper"/>
+    <classEntry path="com.ghostmonk.ui.interactive.TwoDimensionalGridControl"/>
+    <classEntry path="com.ghostmonk.ui.interactive.buttons.ClickableSprite"/>
+    <classEntry path="com.ghostmonk.ui.interactive.buttons.DraggableInteractiveSprite"/>
+    <classEntry path="com.ghostmonk.ui.interactive.buttons.InteractiveSprite"/>
+    <classEntry path="com.ghostmonk.ui.interactive.buttons.NavigationButton"/>
+    <classEntry path="com.ghostmonk.ui.interactive.buttons.SimpleMCToggleBtn"/>
+    <classEntry path="com.ghostmonk.ui.interactive.buttons.Switch"/>
+    <classEntry path="com.ghostmonk.ui.interactive.buttons.interfaces.IInteractiveSprite"/>
+    <classEntry path="com.ghostmonk.ui.navigation.NavigationBar"/>
     <classEntry path="com.ghostmonk.utils.BaseContextMenu"/>
     <classEntry path="com.ghostmonk.utils.FrameCounter"/>
     <classEntry path="com.ghostmonk.utils.ObjectFuncs"/>
@@ -97,6 +103,7 @@
     <classEntry path="com.ghostmonk.utils.SequenceCounter"/>
     <classEntry path="com.ghostmonk.utils.SiteLoader"/>
     <classEntry path="com.ghostmonk.utils.StringCleaner"/>
+    <classEntry path="com.ghostmonk.utils.XMLUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

@@ -65,19 +65,10 @@ package com.ghostmonk.media.video {
 			
 			_duration = 0;
 			_bufferTime = 0.1;
-			_video = new Video();
 			_getLoadUpdates = false;
 			_currentURL = "";
 			
 		}
-		
-		
-		
-		public function get video() : Video {
-            
-            return _video;
-            
-        }  
         
         
         
@@ -123,6 +114,7 @@ package com.ghostmonk.media.video {
 		 */
 		public function get time():Number {
 			
+			if( !_stream ) return 0;
 			return _stream.time;
 			
 		}
@@ -137,6 +129,7 @@ package com.ghostmonk.media.video {
 		 */
 		public function get timeAsPercent():Number {
 			
+			if( !_stream ) return 0;
 			return _stream.time / _duration;
 			 
 		}
@@ -177,8 +170,9 @@ package com.ghostmonk.media.video {
 		 * @return 
 		 * 
 		 */
-		public function get percentLoaded():Number {
+		public function get percentLoaded() : Number {
 			
+			if( !_stream ) return 0;
 			return Math.max( 0, _stream.bytesLoaded / _stream.bytesTotal );
 			
 		}
@@ -194,6 +188,7 @@ package com.ghostmonk.media.video {
 		 */
 		public function setSize( width:Number, height:Number ):void {
 			
+			if( !_video ) return;
 			_video.width = width;
 			_video.height = height;
 			
@@ -218,7 +213,6 @@ package com.ghostmonk.media.video {
         public function destroyCurrentStream() : void {
             
             if ( _stream ) {
-            	_video.removeEventListener( Event.ENTER_FRAME, onEnterFrame );
                 _stream.close();
                 _stream = null;
             }
@@ -226,10 +220,6 @@ package com.ghostmonk.media.video {
             if ( _connection ) {
                 _connection.close();
                 _connection = null;
-            }
-            
-            if( _video ) {
-                _video.clear();
             }
             
         }
@@ -244,9 +234,17 @@ package com.ghostmonk.media.video {
 		 * @param getLoadUpdates set to true if you want to listen for loading updates
 		 * 
 		 */
-		public function load( url:String, autoPlay:Boolean = true, getLoadUpdates:Boolean = false ):void {
+		public function load( url:String, video:Video, autoPlay:Boolean = true, getLoadUpdates:Boolean = false ):void {
 			
 			_currentURL = url;
+			
+			if( _video ) 
+			{
+				_video.removeEventListener( Event.ENTER_FRAME, onEnterFrame );
+				_video = null;			
+			}
+			
+			_video = video;
 			destroyCurrentStream();
 			
 			 _autoPlay = autoPlay;
@@ -368,6 +366,8 @@ package com.ghostmonk.media.video {
         
         
         private function scaleAndCenterCalc( contWidth:Number, contHeight:Number ) : void {
+            
+            if( !_video ) return;
             
             var ratio:Number = Math.min( contWidth / _video.width, contHeight / _video.height );
             

@@ -1,6 +1,7 @@
-package com.ghostmonk.ui.composed {	
+package com.ghostmonk.ui.interactive {	
 
 	import com.ghostmonk.events.PointValueEvent;
+	import com.ghostmonk.ui.interactive.buttons.DraggableInteractiveSprite;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;

@@ -21,7 +21,7 @@ package com.ghostmonk.net {
 			_errorCall = onLoadError;
 			_index = index;
 			
-			super( url, completeCall, onError, progressMeter, loaderContext );
+			super( url, onComplete, onError, progressMeter, loaderContext );
 			
 		}
 		

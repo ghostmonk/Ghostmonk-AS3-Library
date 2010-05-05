@@ -1,4 +1,4 @@
-package com.ghostmonk.ui.composed {
+package com.ghostmonk.ui.interactive.buttons {
 	
 	import com.ghostmonk.events.ToggleEvent;
 	
