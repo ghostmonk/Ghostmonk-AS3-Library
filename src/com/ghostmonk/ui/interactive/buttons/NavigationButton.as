@@ -1,9 +1,10 @@
 package com.ghostmonk.ui.interactive.buttons
 {
-	import com.ghostmonk.events.NavigationEvent;
+	import com.ghostmonk.events.IDEvent;
 	import com.ghostmonk.ui.interactive.buttons.interfaces.INavigationButton;
 	
 	import flash.display.Sprite;
+	import flash.events.MouseEvent;
 
 	public class NavigationButton extends InteractiveSprite implements INavigationButton
 	{
@@ -16,21 +17,25 @@ package com.ghostmonk.ui.interactive.buttons
 			mouseClickFunc = onClick;
 		}
 		
-		public function set text( value:String ) : void {}
-		
 		public function set id( value:Number ) : void 
 		{
 			_id = value;
 		}
 		
-		public function set eventType( value:String ) : void 
-		{	
-			_eventType = value;	
+		public function get id() : Number
+		{
+			return _id;
 		}
 		
-		private function onClick() : void
+		public function activate() : void {}
+		
+		public function deactivate() : void {}
+		
+		public function set text( value:String ) : void {}
+		
+		private function onClick( e:MouseEvent ) : void
 		{
-			dispatchEvent( new NavigationEvent( _eventType, _id ) );
+			dispatchEvent( new IDEvent( IDEvent.UPDATE, _id ) );
 		}
 	}
 }

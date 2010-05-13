@@ -4,8 +4,7 @@ package com.ghostmonk.utils {
     
     
     public class ObjectFuncs 
-    {
-            
+    {   
         public static function objectToString( obj:Object, indent:String = "" ) : String 
         {    
             var output:String = "";
@@ -32,6 +31,18 @@ package com.ghostmonk.utils {
             }
              
             return output;  
-        } 
+        }
+    
+	    public static function clone( input:Object ) : Object
+		{
+			var output:Object = {};
+			for( var id:String in input )
+			{
+				var value:* = input[ id ];
+				output[ id ] = value.toString() === "[object Object]" ? clone( value ) : value;
+			}
+			
+			return output;
+		}
     }
 }

@@ -8,8 +8,7 @@ package com.ghostmonk.ui.navigation
 
 	public class NavigationBar extends Sprite
 	{
-		private var _eventType:String;
-		private var _buttons:Array;
+		private var _collection:NavButtonCollection;
 		private var _buttonType:Class = NavigationButton;
 		private var _padding:Number = 10;
 		private var _isVertical:Boolean = false;
@@ -26,64 +25,65 @@ package com.ghostmonk.ui.navigation
 			reposition();
 		}
 		
-		public function set buttonType( type:Class ) : void
+		public function get collection() : NavButtonCollection 
 		{
-			if( new type() is INavigationButton )
-			{
-				_buttonType = type;
-				return;
-			}
-			throw new Error( new TypeError( type.toString(), "is not a valid button type. Please use a derviative ofNavigationButton" ) );
-		} 
+			return _collection;
+		}
 		
-		public function createBar( ids:Array, eventType:String ) : void
+		public function selectItem( id:Number ) : void
 		{
-			_buttons = _buttons ? _buttons : new Array();
-			_eventType = eventType;
+			_collection.iterator.apply(
+				function( btn:INavigationButton ) : void { btn.deactivate() } 
+			);
+			_collection.getButtonByID( id ).activate();
+		}
+		
+		public function init( btns:NavButtonCollection ) : void
+		{
+			_collection = btns;
 			
-			for( var i:int = 0; i < ids.length; i++ )
-			{
-				var button:INavigationButton = new _buttonType();
-				button.text = ids[ i ];
-				button.addEventListener( IDEvent.UPDATE, onNavigation );
-				_buttons.push( button );
-			}
+			_collection.iterator.apply(
+				function( btn:INavigationButton ) : void { btn.addEventListener( IDEvent.UPDATE, onNavigation ) } 
+			);
 			
 			reposition();
 		}
 		
 		public function enable() : void
 		{
-			for each( var btn:INavigationButton in _buttons ) btn.enable();
+			_collection.iterator.apply( 
+				function( btn:INavigationButton ) : void { btn.enable(); } 
+			);
 		}
 		
 		public function disable() : void
 		{
-			for each( var btn:INavigationButton in _buttons ) btn.disable();
+			_collection.iterator.apply( 
+				function( btn:INavigationButton ) : void { btn.disable(); } 
+			);
 		}
 		
 		private function reposition() : void
 		{
+			if( !_collection ) return;
 			var position:Number = 0;
 			
-			for each( var btn:INavigationButton in _buttons )
-			{
-				if( _isVertical )
+			_collection.iterator.apply( 
+				function( btn:INavigationButton ) : void
 				{
-					btn.view.y = position;
-					position += btn.view.height + _padding;
+					if( _isVertical ) btn.view.y = position;
+					else btn.view.x = position;
+					
+					position += _isVertical ? btn.view.height : btn.view.width;
+					position += _padding;
+					addChild( btn.view );
 				}
-				else
-				{
-					btn.view.x = position;
-					position += btn.view.width + _padding;
-				}
-			}
+			);
 		}
 		
 		private function onNavigation( e:IDEvent ) : void
 		{
-			//dispatchEvent( new NavigationEvent( _eventType, e.id ) );
+			dispatchEvent( e );
 		}
 	}
 }
