@@ -32,10 +32,14 @@ package com.ghostmonk.ui.navigation
 		
 		public function selectItem( id:Number ) : void
 		{
+			var target:INavigationButton = _collection.getButtonByID( id );
 			_collection.iterator.apply(
-				function( btn:INavigationButton ) : void { btn.deactivate() } 
+				function( btn:INavigationButton ) : void 
+				{ 
+					if( btn != target ) btn.deactivate();
+				} 
 			);
-			_collection.getButtonByID( id ).activate();
+			target.activate();
 		}
 		
 		public function init( btns:NavButtonCollection ) : void

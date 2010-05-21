@@ -1,117 +1,69 @@
 package com.ghostmonk.ui.interactive.buttons 
 {	
-	import com.ghostmonk.ui.interactive.buttons.interfaces.IInteractiveSprite;
-	
 	import flash.display.Sprite;
 	import flash.events.EventDispatcher;
 	import flash.events.MouseEvent;
 	
-	public class InteractiveSprite extends EventDispatcher implements IInteractiveSprite
+	/**
+	 *	 
+	 * @author ghostmonk
+	 * 
+	 */
+	public class InteractiveSprite extends EventDispatcher
 	{	
 		private var _view:Sprite;
-		private var _mouseOutFunc:Function;
-		private var _mouseOverFunc:Function;
-		private var _mouseClickFunc:Function;
+		private var _isEnabled:Boolean;
 		
-		/**
-		 * 
-		 * @param view
-		 * @param mouseChildren
-		 * 
-		 */
+		private var _click:Function;
+		private var _rollover:Function;
+		private var _rollout:Function;
+		
 		public function InteractiveSprite( view:Sprite ) 
 		{	
 			_view = view;
 			_view.mouseChildren = false;
+			_click = onClick;
+			_rollover = onRollover;
+			_rollout = onRollout;
 			enable();	
 		}
-		
-		/**
-		 * Use this to access the entire visual object 
-		 * 
-		 * @return 
-		 * 
-		 */
+
 		public function get view() : Sprite 
 		{	
 			return _view;	
 		}
 		
-		/**
-		 * By default this callback is set to null in the constructor and ignored on mouseOver.
-		 * Use this modifier to set the callback and it will be called on mouseOver.
-		 * 
-		 * @param callback function to call on mouseOver. A clone of MouseEvent is passed as a parameter when called. 
-		 * 
-		 */
-		public function set rollOverFunc( callback:Function ) : void 
-		{	
-			_mouseOverFunc = callback;		
-		}
-		
-		/**
-		 * By default this callback is set to null in the constructor and ignored on mouseOut.
-		 * Use this modifier to set the callback and it will be called on mouseOut.
-		 * 
-		 * @param callback function to call on mouseOut. A clone of MouseEvent is passed as a parameter when called. 
-		 * 
-		 */
-		public function set rollOutFunc( callback:Function ) : void 
-		{	
-			_mouseOutFunc = callback;	
-		}
-		
-		/**
-		 * By default this callback is set to null in the constructor and ignored on mouseOut.
-		 * Use this modifier to set the callback and it will be called on the Click MouseEvent.
-		 * 
-		 * @param callback function to call on click. A clone of MouseEvent is passed as a parameter when called. 
-		 * 
-		 */
-		public function set mouseClickFunc( callback:Function ) : void 
-		{	
-			_mouseClickFunc = callback;		
+		public function setCallbacks( click:Function, rollover:Function = null, rollout:Function = null ) : void
+		{
+			disable();
+			_click = click;
+			if( rollover != null ) _rollover = rollover;
+			if( rollout != null ) _rollout = rollout;
+			if( _isEnabled ) enable();
 		}
 		
 		public function enable():void 
 		{
+			_isEnabled = true;
 			_view.buttonMode = true;
-			_view.addEventListener( MouseEvent.ROLL_OVER, onMouseOver );
-			_view.addEventListener( MouseEvent.ROLL_OUT, onMouseOut );
-			_view.addEventListener( MouseEvent.CLICK, onMouseClick );
+			_view.addEventListener( MouseEvent.ROLL_OVER, _rollover);
+			_view.addEventListener( MouseEvent.ROLL_OUT, _rollout  );
+			_view.addEventListener( MouseEvent.CLICK, _click );
 		}
 
 		public function disable() : void 
 		{	
+			_isEnabled = false;
 			_view.buttonMode = false;
-			_view.removeEventListener( MouseEvent.ROLL_OVER, onMouseOver );
-			_view.removeEventListener( MouseEvent.ROLL_OUT, onMouseOut );
-			_view.removeEventListener( MouseEvent.CLICK, onMouseClick );
-			
+			_view.removeEventListener( MouseEvent.ROLL_OVER, _rollover );
+			_view.removeEventListener( MouseEvent.ROLL_OUT, _rollout );
+			_view.removeEventListener( MouseEvent.CLICK, _click);
 		}
 		
-		private function onMouseOver( e:MouseEvent ) : void 
-		{	
-			if( _mouseOverFunc != null ) 
-			{
-				_mouseOverFunc( e );
-			}	
-		}
+		protected function onRollover( e:MouseEvent = null ) : void {}
 		
-		private function onMouseOut( e:MouseEvent ) : void 
-		{	
-			if( _mouseOutFunc != null ) 
-			{
-				_mouseOutFunc( e );
-			}	
-		}
+		protected function onRollout( e:MouseEvent = null ) : void {}
 		
-		private function onMouseClick( e:MouseEvent ) : void 
-		{	
-			if( _mouseClickFunc != null ) 
-			{
-				_mouseClickFunc( e );
-			}
-		}
+		protected function onClick( e:MouseEvent = null ) : void {}
 	}
 }

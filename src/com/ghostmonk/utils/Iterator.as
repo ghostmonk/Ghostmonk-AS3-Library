@@ -13,7 +13,6 @@ package com.ghostmonk.utils
 		
 		public function get hasNext() : Boolean
 		{
-			trace( _currentIter );
 			return _currentIter < _list.length - 1;
 		}
 		

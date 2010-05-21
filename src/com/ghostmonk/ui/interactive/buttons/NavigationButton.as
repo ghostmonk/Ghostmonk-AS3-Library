@@ -14,7 +14,6 @@ package com.ghostmonk.ui.interactive.buttons
 		public function NavigationButton( view:Sprite )
 		{
 			super( view );
-			mouseClickFunc = onClick;
 		}
 		
 		public function set id( value:Number ) : void 
@@ -33,7 +32,7 @@ package com.ghostmonk.ui.interactive.buttons
 		
 		public function set text( value:String ) : void {}
 		
-		private function onClick( e:MouseEvent ) : void
+		override protected function onClick( e:MouseEvent = null ) : void
 		{
 			dispatchEvent( new IDEvent( IDEvent.UPDATE, _id ) );
 		}

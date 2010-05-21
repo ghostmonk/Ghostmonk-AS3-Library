@@ -21,9 +21,7 @@ package com.ghostmonk.ui.navigation
 		public function getButtonByID( id:Number ) : INavigationButton
 		{
 			for each( var button:INavigationButton in _buttons )
-			{
 				if( id == button.id ) return button;
-			}
 			return null;
 		}
 		

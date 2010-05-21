@@ -1,5 +1,5 @@
-package com.ghostmonk.ui.interactive.buttons {
-	
+package com.ghostmonk.ui.interactive.buttons 
+{	
 	import com.ghostmonk.events.ToggleEvent;
 	
 	import flash.display.DisplayObject;
@@ -9,7 +9,8 @@ package com.ghostmonk.ui.interactive.buttons {
 	
 	[Event ( name="toggle", type="com.ghostmonk.events.ToggleEvent" ) ]
 	
-	public class Switch extends InteractiveSprite {
+	public class Switch extends InteractiveSprite 
+	{
 		
 		private var _marker:DisplayObject;
 		
@@ -18,9 +19,8 @@ package com.ghostmonk.ui.interactive.buttons {
 		
 		private var _isOn:Boolean;
 		
-		
-		public function Switch( view:Sprite, marker:DisplayObject, isOn:Boolean = false ) {
-		
+		public function Switch( view:Sprite, marker:DisplayObject, isOn:Boolean = false ) 
+		{
 			super( view );
 			
 			_marker = marker;
@@ -36,46 +36,22 @@ package com.ghostmonk.ui.interactive.buttons {
 			
 			_isOn = isOn;
 			
-			positionMarker();
-			
+			positionMarker();	
 		}
 		
-		
-		
-		override public function enable():void {
-			
-			super.enable();
-			view.addEventListener( MouseEvent.CLICK, onClick );
-			
-		}
-		
-		
-		
-		override public function disable():void {
-			
-			super.disable();
-			view.removeEventListener( MouseEvent.CLICK, onClick );
-			
-		}
-		
-		
-		
-		private function onClick( e:MouseEvent ):void {
-			
+		override protected function onClick( e:MouseEvent = null ):void 
+		{	
 			_isOn = !_isOn;
 			
 			positionMarker();
 			
-			dispatchEvent( new ToggleEvent( ToggleEvent.TOGGLE, _isOn ) );
-			
+			dispatchEvent( new ToggleEvent( ToggleEvent.TOGGLE, _isOn ) );	
 		}
 		
-		private function positionMarker():void {
-			
+		private function positionMarker():void 
+		{	
 			_marker.x = _isOn ? _onPosition.x : _offPosition.y;
-			_marker.y = _isOn ? _onPosition.y : _offPosition.y;
-				
+			_marker.y = _isOn ? _onPosition.y : _offPosition.y;		
 		}
-
 	}
 }
