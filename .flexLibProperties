@@ -14,6 +14,7 @@
     <classEntry path="com.ghostmonk.display.graphics.shapes.RoundedRectangle"/>
     <classEntry path="com.ghostmonk.display.graphics.shapes.SimpleRectangle"/>
     <classEntry path="com.ghostmonk.errorEvents.LoadingError"/>
+    <classEntry path="com.ghostmonk.events.ArrayNavEvent"/>
     <classEntry path="com.ghostmonk.events.FormEvent"/>
     <classEntry path="com.ghostmonk.events.IDEvent"/>
     <classEntry path="com.ghostmonk.events.MeasureEvent"/>
@@ -96,6 +97,7 @@
     <classEntry path="com.ghostmonk.ui.interactive.buttons.Switch"/>
     <classEntry path="com.ghostmonk.ui.interactive.buttons.interfaces.IInteractiveSprite"/>
     <classEntry path="com.ghostmonk.ui.interactive.buttons.interfaces.INavigationButton"/>
+    <classEntry path="com.ghostmonk.ui.navigation.ArrayNavigator"/>
     <classEntry path="com.ghostmonk.ui.navigation.NavButtonCollection"/>
     <classEntry path="com.ghostmonk.ui.navigation.NavigationBar"/>
     <classEntry path="com.ghostmonk.utils.BaseContextMenu"/>
@@ -108,6 +110,7 @@
     <classEntry path="com.ghostmonk.utils.SequenceCounter"/>
     <classEntry path="com.ghostmonk.utils.SiteLoader"/>
     <classEntry path="com.ghostmonk.utils.StringCleaner"/>
+    <classEntry path="com.ghostmonk.utils.StringUtils"/>
     <classEntry path="com.ghostmonk.utils.XMLUtils"/>
   </includeClasses>
   <includeResources/>
