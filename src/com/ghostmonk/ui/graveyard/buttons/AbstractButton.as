@@ -1,6 +1,5 @@
-package com.ghostmonk.ui.graveyard.buttons {
-	
-	import flash.display.InteractiveObject;
+package com.ghostmonk.ui.graveyard.buttons 
+{
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	
@@ -8,90 +7,41 @@ package com.ghostmonk.ui.graveyard.buttons {
 	 * @author ghostmonk
 	 * 
 	 */
-	public class AbstractButton {
-		
-		
-		
+	public class AbstractButton 
+	{	
 		protected var _view:Sprite;
 		private var _mouseClickCall:Function;
 		
-		
-		
-		/**
-		 * 
-		 * @param view
-		 * @param mouseClickCall
-		 * 
-		 */
-		public function AbstractButton( view:Sprite, mouseClickCall:Function ) {
-			
+		public function AbstractButton( view:Sprite, mouseClickCall:Function ) 
+		{		
 			_view = view;
 			_mouseClickCall = mouseClickCall;
-			enable();
-			
+			enable();	
 		}
 		
-		
-		
-		/**
-		 * 
-		 * 
-		 */
-		public function enable():void {
-			
+		public function enable() : void 
+		{	
 			_view.buttonMode = true;
 			_view.addEventListener( MouseEvent.CLICK, onClick );
 			_view.addEventListener( MouseEvent.ROLL_OVER, onRollover );
-			_view.addEventListener( MouseEvent.ROLL_OUT, onRollout );
-			
+			_view.addEventListener( MouseEvent.ROLL_OUT, onRollout );	
 		}
 		
-		
-		
-		/**
-		 * 
-		 * 
-		 */
-		public function disable():void {
-			
+		public function disable() : void 
+		{	
 			_view.buttonMode = false;
 			_view.removeEventListener( MouseEvent.CLICK, onClick );
 			_view.removeEventListener( MouseEvent.ROLL_OVER, onRollover );
-			_view.removeEventListener( MouseEvent.ROLL_OUT, onRollout );
-			
+			_view.removeEventListener( MouseEvent.ROLL_OUT, onRollout );	
 		}
 		
+		protected function onRollover( e:MouseEvent ):void {}
 		
+		protected function onRollout( e:MouseEvent ):void {}
 		
-		/**
-		 * 
-		 * @param e
-		 * 
-		 */
-		protected function onRollover( e:MouseEvent ):void {
-			
+		private function onClick( e:MouseEvent ) : void
+		{	
+			_mouseClickCall( e );	
 		}
-		
-		
-		
-		/**
-		 * 
-		 * @param e
-		 * 
-		 */
-		protected function onRollout( e:MouseEvent ):void {
-				
-		}
-		
-		
-		
-		private function onClick( e:MouseEvent ):void {
-			
-			_mouseClickCall( e );
-			
-		}
-		
-		
-		
 	}
 }

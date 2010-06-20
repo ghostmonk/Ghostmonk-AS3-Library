@@ -14,9 +14,7 @@
     <classEntry path="com.ghostmonk.display.graphics.shapes.RoundedRectangle"/>
     <classEntry path="com.ghostmonk.display.graphics.shapes.SimpleRectangle"/>
     <classEntry path="com.ghostmonk.errorEvents.LoadingError"/>
-    <classEntry path="com.ghostmonk.events.ArrayNavEvent"/>
     <classEntry path="com.ghostmonk.events.FormEvent"/>
-    <classEntry path="com.ghostmonk.events.IDEvent"/>
     <classEntry path="com.ghostmonk.events.MeasureEvent"/>
     <classEntry path="com.ghostmonk.events.PercentageEvent"/>
     <classEntry path="com.ghostmonk.events.PointValueEvent"/>
@@ -36,11 +34,13 @@
     <classEntry path="com.ghostmonk.media.image.BasicImageLoader"/>
     <classEntry path="com.ghostmonk.media.image.BitmapDataHarvester"/>
     <classEntry path="com.ghostmonk.media.video.CoreVideo"/>
+    <classEntry path="com.ghostmonk.media.video.CuePointManager"/>
     <classEntry path="com.ghostmonk.media.video.CustomNetConnection"/>
     <classEntry path="com.ghostmonk.media.video.CustomNetStream"/>
     <classEntry path="com.ghostmonk.media.video.PlayPauseToggle"/>
     <classEntry path="com.ghostmonk.media.video.PlaybackScrubber"/>
     <classEntry path="com.ghostmonk.media.video.StreamClient"/>
+    <classEntry path="com.ghostmonk.media.video.data.CuePoint"/>
     <classEntry path="com.ghostmonk.media.video.data.VideoMetaData"/>
     <classEntry path="com.ghostmonk.media.video.events.ClientDataEvent"/>
     <classEntry path="com.ghostmonk.media.video.events.CuePointEvent"/>
@@ -65,7 +65,6 @@
     <classEntry path="com.ghostmonk.net.XMLLoader"/>
     <classEntry path="com.ghostmonk.particles.PerlinParticleEngine"/>
     <classEntry path="com.ghostmonk.text.EmbeddedText"/>
-    <classEntry path="com.ghostmonk.ui.RotatingBufferIcon"/>
     <classEntry path="com.ghostmonk.ui.formControls.RadioSelector"/>
     <classEntry path="com.ghostmonk.ui.graveyard.IScrollerAsset"/>
     <classEntry path="com.ghostmonk.ui.graveyard.Scroller"/>
@@ -86,32 +85,13 @@
     <classEntry path="com.ghostmonk.ui.graveyard.idecomposed.VideoScrubBar"/>
     <classEntry path="com.ghostmonk.ui.graveyard.video.HorizontalScrollDrag"/>
     <classEntry path="com.ghostmonk.ui.graveyard.video.PlaylistLink"/>
-    <classEntry path="com.ghostmonk.ui.interactive.SimpleSlider"/>
-    <classEntry path="com.ghostmonk.ui.interactive.SimpleStepper"/>
-    <classEntry path="com.ghostmonk.ui.interactive.TwoDimensionalGridControl"/>
-    <classEntry path="com.ghostmonk.ui.interactive.buttons.ClickableSprite"/>
-    <classEntry path="com.ghostmonk.ui.interactive.buttons.DraggableInteractiveSprite"/>
-    <classEntry path="com.ghostmonk.ui.interactive.buttons.InteractiveSprite"/>
-    <classEntry path="com.ghostmonk.ui.interactive.buttons.NavigationButton"/>
-    <classEntry path="com.ghostmonk.ui.interactive.buttons.SimpleMCToggleBtn"/>
-    <classEntry path="com.ghostmonk.ui.interactive.buttons.Switch"/>
-    <classEntry path="com.ghostmonk.ui.interactive.buttons.interfaces.IInteractiveSprite"/>
-    <classEntry path="com.ghostmonk.ui.interactive.buttons.interfaces.INavigationButton"/>
-    <classEntry path="com.ghostmonk.ui.navigation.ArrayNavigator"/>
-    <classEntry path="com.ghostmonk.ui.navigation.NavButtonCollection"/>
-    <classEntry path="com.ghostmonk.ui.navigation.NavigationBar"/>
     <classEntry path="com.ghostmonk.utils.BaseContextMenu"/>
     <classEntry path="com.ghostmonk.utils.FrameCounter"/>
-    <classEntry path="com.ghostmonk.utils.GridMaker"/>
-    <classEntry path="com.ghostmonk.utils.Guid"/>
-    <classEntry path="com.ghostmonk.utils.Iterator"/>
     <classEntry path="com.ghostmonk.utils.ObjectFuncs"/>
     <classEntry path="com.ghostmonk.utils.ReadDisplayProps"/>
     <classEntry path="com.ghostmonk.utils.SequenceCounter"/>
     <classEntry path="com.ghostmonk.utils.SiteLoader"/>
     <classEntry path="com.ghostmonk.utils.StringCleaner"/>
-    <classEntry path="com.ghostmonk.utils.StringUtils"/>
-    <classEntry path="com.ghostmonk.utils.XMLUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
